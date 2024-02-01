@@ -46,8 +46,6 @@ photos_metadata_colname_conversions = {
     "Interoperability InteroperabilityVersion": "interoperability_version"
 }
 
-numeric_cols = ["x_resolution", "y_resolution", "exposure_bias"]
-
 
 class Photo(db.Model):
     """Photo in the database."""
@@ -154,8 +152,9 @@ class Photo(db.Model):
         nullable=True,
     )
 
+    # TODO: changed flash from 40 to 50
     flash = db.Column(
-        db.String(40),
+        db.String(50),
         nullable=True,
     )
 
@@ -194,11 +193,6 @@ class Photo(db.Model):
 
         print('This is metadata_tags: ', metadata_tags)
 
-        # test print for keyword args passed into fn
-        # for key, value in args.items():
-        #     print("%s == %s" % (key, value))
-
-
         print('Before new photo')
         try:
             new_photo = Photo(**metadata_tags)
@@ -206,25 +200,10 @@ class Photo(db.Model):
             print('new_photo.make: ', new_photo.make)
         except IntegrityError:
             print('error occurred', IntegrityError)
-
+            raise IntegrityError
 
         db.session.add(new_photo)
 
         db.session.commit()
 
         return new_photo
-
-
-        # Warbler code for reference:
-        # )
-
-        #     user = User(
-        #     username=username,
-        #     email=email,
-        #     password=hashed_pwd,
-        #     image_url=image_url,
-        # )
-
-        # db.session.add(user)
-        # return user
-
