@@ -19,7 +19,7 @@ CREATE TABLE photos_metadata (
     components_configuration VARCHAR(25),
     exposure_bias VARCHAR(30),
     metering_mode VARCHAR(20),
-    -- TODO: changed flash from 40 to 50
+    -- FIXME: changed flash from 40 to 50
     flash VARCHAR(50),
     focal_length VARCHAR(10),
     maker_note VARCHAR(100),

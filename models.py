@@ -152,7 +152,7 @@ class Photo(db.Model):
         nullable=True,
     )
 
-    # TODO: changed flash from 40 to 50
+    # FIXME: changed flash from 40 to 50
     flash = db.Column(
         db.String(50),
         nullable=True,
