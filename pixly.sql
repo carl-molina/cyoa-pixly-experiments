@@ -2,7 +2,8 @@ CREATE TABLE photos_metadata (
     id SERIAL PRIMARY KEY,
     filename VARCHAR(150),
     make VARCHAR(60),
-    model VARCHAR(30),
+    -- FIXME: increased model from 30 to 50
+    model VARCHAR(50),
     orientation_rotation VARCHAR(30),
     software VARCHAR(30),
     date_and_time VARCHAR(30),

@@ -67,8 +67,9 @@ class Photo(db.Model):
         nullable=True,
     )
 
+    # FIXME: increased to 50
     model = db.Column(
-        db.String(30),
+        db.String(50),
         nullable=True,
     )
 
