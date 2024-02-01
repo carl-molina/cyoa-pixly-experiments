@@ -19,14 +19,17 @@ CREATE TABLE photos_metadata (
     date_and_time_digitized VARCHAR(30),
     components_configuration VARCHAR(25),
     exposure_bias VARCHAR(30),
-    metering_mode VARCHAR(20),
-    -- FIXME: changed flash from 40 to 50
-    flash VARCHAR(50),
+    -- FIXME: changed metering_mode from 20 to 50
+    metering_mode VARCHAR(50),
+    -- FIXME: changed flash from 40 to 100
+    flash VARCHAR(100),
     focal_length VARCHAR(10),
     maker_note VARCHAR(100),
     flashpix_version VARCHAR(35),
-    color_space VARCHAR(20),
+    -- FIXME: changed color_space from 20 to 50
+    color_space VARCHAR(50),
     interoperability_index VARCHAR(10),
+    -- FIXME: changed interoperability from 20 to 50
     interoperability_version VARCHAR(20));
 
 
@@ -36,3 +39,5 @@ CREATE TABLE photos_metadata (
 -- Sorry.
 
 -- If you know how to convert Idftag to float/num successfully, please let us know.
+
+

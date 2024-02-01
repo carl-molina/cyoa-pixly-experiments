@@ -21,7 +21,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ['secret_key']
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 app.config['SQLALCHEMY_ECHO'] = False
-# app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
+app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 debug = DebugToolbarExtension(app)
 connect_db(app)
@@ -39,6 +39,7 @@ s3 = boto3.client(
 def homepage():
     """Show homepage"""
 
+    # FIXME: moved logic to helpers function file
     photos_urls = view_photos_from_s3()
 
     return render_template('base.html', photos_urls=photos_urls)
