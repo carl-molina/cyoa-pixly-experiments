@@ -185,7 +185,8 @@ def upload_photo():
             try:
                 new_photo_in_db = Photo.submit_photo(metadata_tags)
             except IntegrityError:
-                flash("Could not add to database")
+                # FIXME: edited flash message
+                flash("Could not add to database (filename already exists)")
                 return redirect('/')
 
             print('new_photo_in_db: ', new_photo_in_db)
