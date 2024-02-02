@@ -1,8 +1,8 @@
 CREATE TABLE photos_metadata (
     id SERIAL PRIMARY KEY,
-    filename VARCHAR(150),
+    filename VARCHAR(150) UNIQUE,
     make VARCHAR(60),
-    model VARCHAR(50),
+    model VARCHAR(60),
     orientation_rotation VARCHAR(30),
     software VARCHAR(30),
     date_and_time VARCHAR(30),
@@ -25,7 +25,8 @@ CREATE TABLE photos_metadata (
     flashpix_version VARCHAR(35),
     color_space VARCHAR(50),
     interoperability_index VARCHAR(10),
-    interoperability_version VARCHAR(20));
+    interoperability_version VARCHAR(50),
+    alt_tag VARCHAR(400));
 
 
 -- Aight, look. We type coerced everything into only strings because it's difficult trying to convert
@@ -34,5 +35,3 @@ CREATE TABLE photos_metadata (
 -- Sorry.
 
 -- If you know how to convert Idftag to float/num successfully, please let us know.
-
-

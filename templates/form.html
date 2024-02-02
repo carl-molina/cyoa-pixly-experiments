@@ -2,11 +2,32 @@
 
 {% block content %}
 <h2>Upload an image!</h2>
+
 <form method="POST" enctype="multipart/form-data" action="{{ url_for('upload_photo') }}">
-  <label for="photo">Upload a photo here: </label>
-  <input type="file" name="photo" id="photo">
+
+  <div>
+    <label for="alt-tag">Alt Tag: </label>
+    <input id="alt-tag" name="alt-tag" required placeholder="description of photo"/>
+  </div>
+
+  <div>
+    <label for="photo">Upload a photo here: </label>
+    <input type="file" name="photo" id="photo">
+  </div>
+
   <button type="submit">Upload</button>
 </form>
+
+  <br>
+  <br>
+  <hr></hr>
+  <br>
+
+  <form action="{{ url_for('homepage') }}" method="GET">
+    <button type="submit">Return to Home</button>
+  </form>
+
+
 {% endblock %}
 
 <!-- source for skeleton of form:

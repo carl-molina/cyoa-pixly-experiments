@@ -1,7 +1,5 @@
 """SQLAlchemy models for pixly app"""
 
-from datetime import datetime
-
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
 
@@ -18,39 +16,11 @@ def connect_db(app):
     db.init_app(app)
 
 
-photos_metadata_colname_conversions = {
-    "Image Make": "make",
-    "Image Model": "model",
-    "Image Orientation": "orientation_rotation",
-    "Image Software": "software",
-    "Image DateTime": "date_and_time",
-    "Image YCbCrPositioning": "ycbcr_positioning",
-    "Image XResolution": "x_resolution",
-    "Image YResolution": "y_resolution",
-    "Image ResolutionUnit": "resolution_unit",
-    "EXIF ExposureTime": "exposure_time",
-    "EXIF FNumber": "f_number",
-    "EXIF ExposureProgram": "exposure_program",
-    "EXIF ExifVersion": "exif_version",
-    "EXIF DateTimeOriginal": "date_and_time_original",
-    "EXIF DateTimeDigitized": "date_and_time_digitized",
-    "EXIF ComponentsConfiguration": "components_configuration",
-    "EXIF ExposureBiasValue": "exposure_bias",
-    "EXIF MeteringMode": "metering_mode",
-    "EXIF Flash": "flash",
-    "EXIF FocalLength": "focal_length",
-    "EXIF UserComment": "maker_note",
-    "EXIF FlashPixVersion": "flashpix_version",
-    "EXIF ColorSpace": "color_space",
-    "Interoperability InteroperabilityIndex": "interoperability_index",
-    "Interoperability InteroperabilityVersion": "interoperability_version"
-}
-
-
 class Photo(db.Model):
     """Photo in the database."""
 
     __tablename__ = "photos_metadata"
+    # Note to selves: this is how we link our model to the database table!
 
     id = db.Column(
         db.Integer,
@@ -60,6 +30,7 @@ class Photo(db.Model):
     filename = db.Column(
         db.String(150),
         nullable=True,
+        unique=True,
     )
 
     make = db.Column(
@@ -68,7 +39,7 @@ class Photo(db.Model):
     )
 
     model = db.Column(
-        db.String(50),
+        db.String(60),
         nullable=True,
     )
 
@@ -183,12 +154,37 @@ class Photo(db.Model):
     )
 
     interoperability_version = db.Column(
-        db.String(20),
+        db.String(50),
         nullable=True,
     )
 
+    alt_tag = db.Column(
+        db.String(400),
+        nullable=False
+    )
+
+    def __repr__(self):
+        return f"<{self.__class__.__name__} self.filename={self.filename}>"
+
     @classmethod
     def submit_photo(self, metadata_tags):
+        """
+        INPUTS: submit_photo takes its instance and it takes metadata_tags,
+        a dictionary with information on a photo's metadata.
+
+        metadata_tags example:
+        {
+            filename: "Kodak_CX7530.jpg",
+            make: "EASTMAN KODAK COMPANY",
+            model: "KODAK CX7530 ZOOM DIGITAL CAMERA",
+            ...
+        }
+
+        FUNCTION: generates a new instance of Photo class using metadata_tags.
+        Adds photo instance to database.
+
+        OUTPUT: new_photo, the generated instance of the photograph.
+        """
 
         print('This is metadata_tags: ', metadata_tags)
 
@@ -199,7 +195,6 @@ class Photo(db.Model):
             print('new_photo.make: ', new_photo.make)
         except IntegrityError:
             print('error occurred', IntegrityError)
-            raise IntegrityError
 
         db.session.add(new_photo)
 

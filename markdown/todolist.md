@@ -46,3 +46,25 @@ Wed, Jan 31, 2024
     6. TODO: think about how to search for photo based on a given query (when was the photo taken, author of photo, aperture of photo, just search queries based on metadata/exif data)
 
 
+some changes to make soon:
+- add a button on homepage that links to upload section
+- make sure to update db to accomodate larger varchar for model col
+
+
+
+Thursday, Feb 1, 2024
+- try to coerce num vals to strings then back to numbers and alter database schema (so user can search by # val)
+- add button linking to upload section
+- searching for exif data
+- picking lightning talk topic
+
+TODO: reconfigure HTML as needed
+TODO: add alt image tags to site for accessibility
+
+
+
+TODO: 1. make buttons that direct to upload page and button to redirect to homepage
+TODO: 2. make links to photos to bring them to their own page to see their metadata and potential edits
+TODO: 3. make button to return to homepage on single photo page
+TODO: 3.5 recongifure base.html and put appropriate non-base.html templates elsewhere
+TODO: 4. on editing photo, redirect to homepage?

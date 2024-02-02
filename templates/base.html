@@ -4,32 +4,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/stylesheets/pixly.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
   <title>Pix.ly</title>
 </head>
 
 <body>
-  <h1>Welcome to Pix.ly!</h1>
-  <p>At Pix.ly, you can do all sorts of things! You can:</p>
-  <ul>
-    <li>Upload images</li>
-  </ul>
-
-  <!-- flash messages populated here -->
-  {% for category, message in get_flashed_messages(with_categories=True) %}
-  <div class="alert alert-{{ category }}">{{ message }}</div>
-  {% endfor %}
-
-  <!-- <img src="{{ photo_url }}"/> -->
-  <div class="image-upload-form">
-    {% block content %}
-    {% endblock %}
+  <div class="header-box">
+    <h1>Welcome to Pix.ly!</h1>
   </div>
-  <div class="image-storage">
-    {% for photo_url in photos_urls %}
-    <img src="{{ photo_url }}" />
-    {% endfor %}
+  <div class="site-overview">
+    <p>At Pix.ly, you can do all sorts of things! You can:</p>
+    <ul>
+      <li>Upload images</li>
+      <li>See the images you uploaded</li>
+      <li>See the images other users have uploaded</li>
+    </ul>
   </div>
-  <!-- this will be the html for showing images eventually -->
+
+  {% block content %}
+  {% endblock %}
+
 </body>
 
 </html>
