@@ -67,7 +67,6 @@ class Photo(db.Model):
         nullable=True,
     )
 
-    # FIXME: increased to 50
     model = db.Column(
         db.String(50),
         nullable=True,
@@ -148,13 +147,11 @@ class Photo(db.Model):
         nullable=True,
     )
 
-    # FIXME: changed from 20 to 50
     metering_mode = db.Column(
         db.String(50),
         nullable=True,
     )
 
-    # FIXME: changed flash from 40 to 50
     flash = db.Column(
         db.String(100),
         nullable=True,
@@ -175,7 +172,6 @@ class Photo(db.Model):
         nullable=True,
     )
 
-    # FIXME: changed from 20 to 50
     color_space = db.Column(
         db.String(50),
         nullable=True,
@@ -186,7 +182,6 @@ class Photo(db.Model):
         nullable=True,
     )
 
-    # FIXME: changed from 20 to 50
     interoperability_version = db.Column(
         db.String(20),
         nullable=True,

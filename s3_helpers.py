@@ -32,7 +32,6 @@ def upload_to_s3(file, filename):
     print(f'upload file response: {resp}')
 
 
-# FIXME: moved in from app.py
 def view_photos_from_s3():
     """Gets images from S3 bucket and returns a list of photo urls."""
 

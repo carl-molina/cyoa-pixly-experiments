@@ -39,7 +39,6 @@ s3 = boto3.client(
 def homepage():
     """Show homepage"""
 
-    # FIXME: moved logic to helpers function file
     photos_urls = view_photos_from_s3()
 
     return render_template('base.html', photos_urls=photos_urls)
